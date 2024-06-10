@@ -1,0 +1,9 @@
+WITH CTE AS (
+SELECT 
+        *, 
+        LAG(temperature) OVER (ORDER BY recordDate) AS temp_lag
+FROM Weather
+)
+SELECT id
+FROM CTE
+WHERE temperature > temp_lag
