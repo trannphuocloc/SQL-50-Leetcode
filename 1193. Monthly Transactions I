@@ -1,0 +1,13 @@
+select
+    FORMAT(trans_date,'yyyy-MM') as month,
+    country,
+    count(id) as trans_count,
+    count(case when state = 'approved' then 1 else null end) as approved_count,
+    sum(amount) as trans_total_amount,
+    sum(case when state = 'approved' then amount else 0 end) as approved_total_amount
+from Transactions
+group by FORMAT(trans_date,'yyyy-MM'), country
+
+---
+FORMAT to get your proper type of date that you want
+line 5, else null for not count, if else 0, it still count 
