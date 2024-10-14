@@ -7,3 +7,16 @@ from Employees e1
 inner join Employees e2 on e2.reports_to = e1.employee_id
 group by e1.employee_id, e1.name
 order by e1.employee_id
+
+
+-----
+
+select 
+*
+from Employees e1
+inner join Employees e2 on e2.reports_to = e1.employee_id
+
+| employee_id | name  | reports_to | age | employee_id | name  | reports_to | age |
+| ----------- | ----- | ---------- | --- | ----------- | ----- | ---------- | --- |
+| 9           | Hercy | null       | 43  | 6           | Alice | 9          | 41  |
+| 9           | Hercy | null       | 43  | 4           | Bob   | 9          | 36  |
